@@ -28,6 +28,8 @@
  * @END LICENSE
  */
 
+#include <vector>
+
 #include "psi4/psi4-dec.h"
 #include "psi4/libpsi4util/PsiOutStream.h"
 #include "psi4/liboptions/liboptions.h"
@@ -53,11 +55,16 @@ SharedWavefunction psi4_plugin17(SharedWavefunction ref_wfn, Options& options)
 {
     int print = options.get_int("PRINT");
 
-    /* Your code goes here */
-    // Tuple unpacking
+    // test tuple unpacking
     std::tuple<int,int> t(2,3);
     auto [n,d] = t;
     std::cout << "\n n * d = " << n * d << std::endl;
+
+    // test sequential execution
+    // std::vector<int> v = {0,5,10,-1,3};
+    // #include <execution>
+    // std::sort(std::parallel::seq, v.begin(), v.end());
+
     // Typically you would build a new wavefunction and populate it with data
     return ref_wfn;
 }
